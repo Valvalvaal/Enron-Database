@@ -17,9 +17,12 @@ func main() {
 		fmt.Println("Usage: ./indexer directory")
 	}
 	dirname := os.Args[1]
+
 	f, err := os.Open("./" + dirname)
 	fmt.Println(f.Name(), err)
 
 	files, err := f.Readdir(0)
-	fmt.Println(files, err)
+	for _, v := range files {
+		fmt.Println(v.Name(), v.IsDir())
+	}
 }
