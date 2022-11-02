@@ -20,8 +20,9 @@
 # Go workspace file
 go.work
 
-# /data folder 
+# Data folders
 data/
+enron_mail_20110402/
 
 # 
 .DS_Store
