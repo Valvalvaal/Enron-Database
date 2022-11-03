@@ -24,15 +24,12 @@ func main() {
 	check(err)
 	files1, err := f.ReadDir(0)
 	check(err)
-	fmt.Println(files1[0].Name())
-	for _, v := range files1 {
-		fmt.Println(v.Name(), v.IsDir())
-	}
 
-	r, err := os.Open("./" + dirname + "/" + f.Name())
+	r, err := os.Open("./" + dirname + "/" + files1[2].Name())
+	check(err)
 
-	files, err := r.Readdir(0)
-	for _, v := range files {
+	contacts, err := r.Readdir(0)
+	for _, v := range contacts {
 		fmt.Println(v.Name(), v.IsDir())
 	}
 
