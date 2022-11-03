@@ -11,6 +11,8 @@ func check(e error) {
 	}
 }
 
+// enron_mail_20110402
+
 func main() {
 
 	if len(os.Args) != 2 {
@@ -19,10 +21,19 @@ func main() {
 	dirname := os.Args[1]
 
 	f, err := os.Open("./" + dirname)
-	fmt.Println(f.Name(), err)
+	check(err)
+	files1, err := f.ReadDir(0)
+	check(err)
+	fmt.Println(files1[0].Name())
+	for _, v := range files1 {
+		fmt.Println(v.Name(), v.IsDir())
+	}
 
-	files, err := f.Readdir(0)
+	r, err := os.Open("./" + dirname + "/" + f.Name())
+
+	files, err := r.Readdir(0)
 	for _, v := range files {
 		fmt.Println(v.Name(), v.IsDir())
 	}
+
 }
